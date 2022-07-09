@@ -13,6 +13,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "entities": "^4.3.1",
     "node-fetch": "^3.2.6"
   },
   "devDependencies": {

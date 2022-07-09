@@ -4,6 +4,10 @@
   "env": {
     "node": true
   },
+  "ignorePatterns": [
+    "node_modules",
+    "/dist"
+  ],
   "plugins": [
     "only-warn",
     "@typescript-eslint"

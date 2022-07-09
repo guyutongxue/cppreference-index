@@ -1,2 +1,4 @@
 
-export { parseIndex } from "./index_adaptor";
+
+export { getHeaders } from "./header";
+export { getSymbols } from "./symbol";

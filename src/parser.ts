@@ -51,8 +51,8 @@ export interface MwHeadingNode {
   title: MwNodes;
 }
 export interface MwHtmlEntityNode {
-  type: "HtmlEntity";
-  hex_char: string;
+  type: "HTMLEntity";
+  hex_char: "x" | "X";
   hexadecimal: boolean;
   named: boolean;
   value: string;
