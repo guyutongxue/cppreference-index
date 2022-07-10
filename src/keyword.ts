@@ -1,6 +1,8 @@
 // https://en.cppreference.com/w/cpp/keyword
 // Should be manually updated
 
+import { AttributeIndex, KeywordIndex, Marks } from "./typing";
+
 const KEYWORDS = [
   { keyword: "alignas", since: "c++11" },
   { keyword: "alignof", since: "c++11" },
@@ -102,22 +104,66 @@ const KEYWORDS = [
 ];
 
 const IDENTIFIERS_W_SPECIAL_MEANING = [
-  { keyword: "final", since: "c++11" },
-  { keyword: "override", since: "c++11" },
-  { keyword: "transaction_safe", ts: "tm" },
-  { keyword: "import", since: "c++20" },
-  { keyword: "module", since: "c++20" },
+  { keyword: "final", since: "c++11", link: "cpp/language/final" },
+  { keyword: "override", since: "c++11", link: "cpp/language/override" },
+  {
+    keyword: "transaction_safe",
+    ts: "tm",
+    link: "cpp/language/transactional_memory",
+  },
+  {
+    keyword: "transaction_safe_dynamic",
+    ts: "tm",
+    link: "cpp/language/transactional_memory",
+  },
+  { keyword: "import", since: "c++20", link: "cpp/keyword/import" },
+  { keyword: "module", since: "c++20", link: "cpp/keyword/module" },
 ];
 
+export function getKeywords(): KeywordIndex[] {
+  return [
+    ...KEYWORDS.map<KeywordIndex>((w) => ({
+      type: "keyword",
+      name: w.keyword,
+      marks: {
+        since: w.ts ?? w.since,
+      },
+      link: `cpp/keyword/${w.keyword}`,
+      canBeUsedAsIdentifier: false,
+    })),
+    ...IDENTIFIERS_W_SPECIAL_MEANING.map<KeywordIndex>((w) => ({
+      type: "keyword",
+      name: w.keyword,
+      marks: {
+        since: w.ts ?? w.since,
+      },
+      link: w.link,
+      canBeUsedAsIdentifier: false,
+    })),
+  ];
+}
+
 const STD_ATTRIBUTES = [
-  { attr: "noreturn" },
-  { attr: "carries_dependency" },
-  { attr: "deprecated" },
-  { attr: "fallthrough" },
-  { attr: "nodiscard" },
-  { attr: "maybe_unused" },
-  { attr: "likely" },
-  { attr: "unlikely" },
-  { attr: "no_unique_address" },
-  { attr: "optimize_for_synchronized" }
+  { attr: "noreturn", since: "c++11" },
+  { attr: "carries_dependency", since: "c++11" },
+  { attr: "deprecated", since: "c++14" },
+  { attr: "fallthrough", since: "c++17" },
+  { attr: "nodiscard", since: "c++17" },
+  { attr: "maybe_unused", since: "c++17" },
+  { attr: "likely", since: "c++20" },
+  { attr: "unlikely", link: "cpp/language/attributs/likely", since: "c++20" },
+  { attr: "no_unique_address", since: "c++20" },
+  { attr: "optimize_for_synchronized", ts: "tm" },
 ];
+
+export function getStdAttributes(): AttributeIndex[] {
+  return STD_ATTRIBUTES.map<AttributeIndex>((a) => ({
+    type: "attribute",
+    namespace: "",
+    name: `[[${a.attr}]]`,
+    link: a.link ?? `cpp/language/attributes/${a.attr}`,
+    marks: {
+      since: a.ts ?? a.since,
+    },
+  }));
+}

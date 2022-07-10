@@ -1,5 +1,6 @@
 import { MwNodes, MwParameter, MwTemplateNode, parseSrc } from "./parser";
 import { decodeHTML } from "entities";
+import { Marks } from "./typing";
 
 function expectText(nodes: MwNodes): string {
   return nodes.map((node) => {
@@ -49,12 +50,6 @@ function simplifyTemplate(node: MwTemplateNode): SimplifiedTemplate {
     params,
   };
 }
-
-export type Marks = {
-  since?: string;
-  deprecated?: string;
-  removed?: string;
-};
 
 export function generateMarks(t: SimplifiedTemplate) {
   const marks: Marks = {};

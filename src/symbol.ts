@@ -1,9 +1,14 @@
+import { Marks, SymbolIndex } from "./typing";
 import { parseSrc } from "./parser";
-import { generateMarks, filterSymbols, SimplifiedNode, Marks } from "./simplify";
+import {
+  generateMarks,
+  filterSymbols,
+  SimplifiedNode,
+} from "./simplify";
 
 interface IndexItem {
   namespace: string;
-  symbolName: string;
+  name: string;
   link: string;
   description?: string;
   modifiers: {
@@ -39,7 +44,7 @@ async function namespaceToIndexItems(
   const result: IndexItem[] = [];
   result.push({
     namespace,
-    symbolName: target,
+    name: target,
     link: page,
     modifiers: {
       namespace: true,
@@ -90,15 +95,15 @@ async function toIndexItems(original: SimplifiedNode[], options: Options) {
         } else {
           // other names
           const link = now.params["1"];
-          let symbolName = now.params["2"] ?? link.split("/").pop();
+          let name = now.params["2"] ?? link.split("/").pop();
           let template = false;
-          if (symbolName.endsWith("<>")) {
-            symbolName = symbolName.substring(0, symbolName.length - 2);
+          if (name.endsWith("<>")) {
+            name = name.substring(0, name.length - 2);
             template = true;
           }
           pending = {
             namespace: options.namespace,
-            symbolName,
+            name,
             link,
             modifiers: {
               namespace: false,
@@ -132,12 +137,8 @@ async function getItemsInPage(options: Options) {
   return toIndexItems(simplified, options);
 }
 
-export type SymbolIndex = {
-  type: "symbol";
-} & IndexItem;
-
-export async function getSymbols() {
-  const items: SymbolIndex[] = (
+export async function getSymbols(): Promise<SymbolIndex[]> {
+  const items = (
     await Promise.all(
       [
         {
@@ -157,9 +158,23 @@ export async function getSymbols() {
     )
   )
     .flat()
-    .map((i) => ({
+    .map<SymbolIndex>((i) => ({
       type: "symbol",
-      ...i,
+      symbolType: (() => {
+        if (!i.namespace) {
+          return i.modifiers.function ? "functionLikeMacro" : "macro";
+        } else if (i.modifiers.namespace) {
+          return "namespace";
+        } else if (i.modifiers.template) {
+          return i.modifiers.function ? "functionTemplate" : "template";
+        } else {
+          return i.modifiers.function ? "function" : "other";
+        }
+      })(),
+      name: i.namespace ? `${i.namespace}::${i.name}` : i.name,
+      link: i.link,
+      marks: i.marks,
+      description: i.description,
     }));
   return items;
 }

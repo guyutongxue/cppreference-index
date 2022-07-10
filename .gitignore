@@ -4,6 +4,4 @@
 
 /dist/
 
-# Ignore test files temporarily
-# Enable them with test framework later
-/test/
+/temp/

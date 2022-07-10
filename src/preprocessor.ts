@@ -1,15 +1,10 @@
 // Should be manually updated
 
-interface PreprocessorToken {
-  token: string;
-  type:
-    | "directiveName"
-    | "operator"
-    | "replacement"
-    | "operatorOutsideDirective";
-  since?: string;
-  link: string;
-}
+import {
+  PreprocessorToken,
+  PreprocessorTokenIndex,
+  SymbolIndex,
+} from "./typing";
 
 const PREPROCESSOR_TOKENS: PreprocessorToken[] = [
   {
@@ -87,6 +82,18 @@ const PREPROCESSOR_TOKENS: PreprocessorToken[] = [
   { token: "undef", type: "directiveName", link: "cpp/preprocessor/replace" },
 ];
 
+export function getPreprocessorTokens(): PreprocessorTokenIndex[] {
+  return PREPROCESSOR_TOKENS.map<PreprocessorTokenIndex>((t) => ({
+    type: "preprocessorToken",
+    name: t.token,
+    tokenType: t.type,
+    link: t.link,
+    marks: {
+      since: t.since,
+    },
+  }));
+}
+
 interface PredefinedMacro {
   macro: string;
   since?: string;
@@ -114,3 +121,15 @@ const PREDEFINED_MACROS: PredefinedMacro[] = [
 ];
 const PREDEFINED_MACRO_LINK = "cpp/preprocessor/replace";
 
+export function getPredefinedMacros(): SymbolIndex[] {
+  return PREDEFINED_MACROS.map((m) => ({
+    type: "symbol",
+    symbolType: "macro",
+    name: m.macro,
+    link: PREDEFINED_MACRO_LINK,
+    marks: {
+      since: m.since,
+      removed: m.removed,
+    },
+  }));
+}
