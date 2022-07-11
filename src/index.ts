@@ -43,7 +43,7 @@ async function get(options?: Options): Promise<void | Index[]> {
   headers && result.push(...(await getHeaders()));
   keywords && result.push(...getKeywords());
   stdAttributes && result.push(...getStdAttributes());
-  predefinedMacros && result.push(...getPredefinedMacros());
+  predefinedMacros && result.push(...(await getPredefinedMacros()));
   preprocessorTokens && result.push(...getPreprocessorTokens());
   const writeToFile = options?.writeToFile;
   if (!writeToFile) {

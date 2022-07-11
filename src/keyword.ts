@@ -1,7 +1,7 @@
 // https://en.cppreference.com/w/cpp/keyword
 // Should be manually updated
 
-import { AttributeIndex, KeywordIndex, Marks } from "./typing";
+import { AttributeIndex, KeywordIndex } from "./typing";
 
 const KEYWORDS = [
   { keyword: "alignas", since: "c++11" },

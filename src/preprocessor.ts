@@ -1,5 +1,6 @@
 // Should be manually updated
 
+import { fetchSrc } from "./fetch";
 import {
   PreprocessorToken,
   PreprocessorTokenIndex,
@@ -119,17 +120,38 @@ const PREDEFINED_MACROS: PredefinedMacro[] = [
     removed: "c++23",
   },
 ];
-const PREDEFINED_MACRO_LINK = "cpp/preprocessor/replace";
 
-export function getPredefinedMacros(): SymbolIndex[] {
-  return PREDEFINED_MACROS.map((m) => ({
-    type: "symbol",
-    symbolType: "macro",
-    name: m.macro,
-    link: PREDEFINED_MACRO_LINK,
-    marks: {
-      since: m.since,
-      removed: m.removed,
-    },
-  }));
+async function getLangFeatureMacros(): Promise<SymbolIndex[]> {
+  const src = await fetchSrc("Template:cpp/utility/lang_feature_macros");
+  const matches = src.matchAll(/(__cpp[_a-z]+).*\{\{mark c\+\+(\d{2})\}\}/g);
+  const result: SymbolIndex[] = [];
+  for (const match of matches) {
+    const year = Number(match[2]);
+    result.push({
+      type: "symbol",
+      symbolType: "macro",
+      name: match[1],
+      link: "cpp/feature_test",
+      marks: {
+        since: `c++${Math.max(year, 20)}`,
+      },
+    });
+  }
+  return result;
+}
+
+export async function getPredefinedMacros(): Promise<SymbolIndex[]> {
+  return [
+    ...PREDEFINED_MACROS.map<SymbolIndex>((m) => ({
+      type: "symbol",
+      symbolType: "macro",
+      name: m.macro,
+      link: "cpp/preprocessor/replace",
+      marks: {
+        since: m.since,
+        removed: m.removed,
+      },
+    })),
+    ...(await getLangFeatureMacros()),
+  ];
 }
