@@ -1,4 +1,4 @@
-import { Cheerio, Element, load } from "cheerio";
+import { load } from "cheerio";
 import { fetchSrc } from "./fetch";
 import { HeaderIndex, Marks } from "./typing";
 
@@ -8,11 +8,11 @@ export async function getHeaders(): Promise<HeaderIndex[]> {
   $(".editsection").remove();
   const headers = $(".t-dsc:has(.t-dsc-member-div)")
     .map(function () {
-      const tds: Cheerio<Element> = $(this).children();
+      const tds = $(this).children();
       const td1 = tds.eq(0);
       const a = td1.find("a");
       const link = a.attr("href")?.substring(3); // remove /w/
-      const name = a.text();
+      const name = a.text().trim();
       const marks: Marks = {};
       td1.find(".t-mark-rev")?.each(function () {
         const text = $(this).text().toLowerCase();

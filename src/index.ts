@@ -4,11 +4,10 @@ import { getSymbols } from "./symbol";
 import { getHeaders } from "./header";
 import { getKeywords, getStdAttributes } from "./keyword";
 import { getPreprocessorTokens, getPredefinedMacros } from "./preprocessor";
-import { Index } from "./typing";
+import { Index, SymbolIndex } from "./typing";
+import { fetchDetailed, transformDetailed } from "./detailed";
 
-export type Options = OptionsWithReturnValue | OptionsWithFile;
-
-type OptionsBase = {
+type Options<Detailed extends boolean> = {
   categories?: {
     symbols?: boolean;
     headers?: boolean;
@@ -17,19 +16,11 @@ type OptionsBase = {
     predefinedMacros?: boolean;
     preprocessorTokens?: boolean;
   };
+  writeToFile?: string | number | false;
+  detailedSymbols?: Detailed;
 };
 
-type OptionsWithReturnValue = OptionsBase & {
-  writeToFile?: false | null;
-};
-
-type OptionsWithFile = OptionsBase & {
-  writeToFile: string;
-};
-
-function get(options: OptionsWithFile): Promise<void>;
-function get(options?: OptionsWithReturnValue): Promise<Index[]>;
-async function get(options?: Options): Promise<void | Index[]> {
+async function get<Detailed extends boolean>(options?: Options<Detailed>): Promise<Index<Detailed>[]> {
   const {
     symbols = true,
     headers = true,
@@ -38,17 +29,26 @@ async function get(options?: Options): Promise<void | Index[]> {
     predefinedMacros = true,
     preprocessorTokens = true,
   } = options?.categories ?? {};
-  const result: Index[] = [];
-  symbols && result.push(...(await getSymbols()));
+
+  const symbolIndex: SymbolIndex[] = [];
+  const result: Index<boolean>[] = [];
+
+  symbols && symbolIndex.push(...(await getSymbols()));
+  predefinedMacros && symbolIndex.push(...(await getPredefinedMacros()));
+  if (options?.detailedSymbols) {
+    const info = await fetchDetailed();
+    result.push(...transformDetailed(info, symbolIndex));
+  } else {
+    result.push(...symbolIndex);
+  }
+
   headers && result.push(...(await getHeaders()));
   keywords && result.push(...getKeywords());
   stdAttributes && result.push(...getStdAttributes());
-  predefinedMacros && result.push(...(await getPredefinedMacros()));
   preprocessorTokens && result.push(...getPreprocessorTokens());
+
   const writeToFile = options?.writeToFile;
-  if (!writeToFile) {
-    return result;
-  } else {
+  if (writeToFile) {
     const json = JSON.stringify(result);
     if (typeof writeToFile === "string") {
       fs.writeFileSync(writeToFile, json);
@@ -57,6 +57,8 @@ async function get(options?: Options): Promise<void | Index[]> {
       fs.writeSync(writeToFile, json);
     }
   }
+  // @ts-ignore
+  return result;
 }
 
 export default get;

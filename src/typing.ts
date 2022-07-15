@@ -30,7 +30,7 @@ export interface SymbolIndex extends IndexBase<"symbol"> {
     | "functionTemplate"
     | "namespace"
     | "other";
-  description?: string;
+  note?: string;
 }
 export interface HeaderIndex extends IndexBase<"header"> {
   description: string;
@@ -45,8 +45,33 @@ export interface PreprocessorTokenIndex extends IndexBase<"preprocessorToken"> {
   tokenType: PreprocessorToken["type"];
 }
 
-export type Index =
-  | SymbolIndex
+export type DetailedSymbolType =
+  | "concept"
+  | "class"
+  | "classTemplate"
+  | "classTemplateSpecialization"
+  | "typeAlias"
+  | "typeAliasTemplate"
+  | "function"
+  | "functionTemplate"
+  | "enumeration"
+  | "enumerator"
+  | "macro"
+  | "functionLikeMacro"
+  | "constant"
+  | "niebloid"
+  | "object"
+  | "variableTemplate"
+  | "namespace"
+  | "other";
+export interface DetailedSymbolIndex extends IndexBase<"symbol"> {
+  symbolType: DetailedSymbolType;
+  note?: string;
+  description?: string;
+}
+
+export type Index<Detailed extends boolean = false> =
+  | (Detailed extends true ? DetailedSymbolIndex : SymbolIndex)
   | HeaderIndex
   | KeywordIndex
   | AttributeIndex

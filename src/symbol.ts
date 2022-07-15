@@ -10,7 +10,7 @@ interface IndexItem {
   namespace: string;
   name: string;
   link: string;
-  description?: string;
+  note?: string;
   modifiers: {
     namespace: boolean;
     function: boolean;
@@ -119,11 +119,11 @@ async function toIndexItems(original: SimplifiedNode[], options: Options) {
         pending.marks = { ...pending.marks, ...marks };
       }
     } else {
-      // description
+      // note
       const trimmed = now.trim();
       if (trimmed.startsWith("(") && trimmed.endsWith(")")) {
         pending &&
-          (pending.description = trimmed.substring(1, trimmed.length - 1));
+          (pending.note = trimmed.substring(1, trimmed.length - 1));
       }
     }
   }
@@ -174,7 +174,7 @@ export async function getSymbols(): Promise<SymbolIndex[]> {
       name: i.namespace ? `${i.namespace}::${i.name}` : i.name,
       link: i.link,
       marks: i.marks,
-      description: i.description,
+      note: i.note,
     }));
   return items;
 }
