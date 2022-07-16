@@ -1,6 +1,6 @@
 {
-  "name": "cppreference-index",
-  "version": "0.1.0",
+  "name": "@gytx/cppreference-index",
+  "version": "0.1.1",
   "description": "",
   "type": "module",
   "main": "./dist/index.js",

@@ -62,3 +62,4 @@ async function get<Detailed extends boolean>(options?: Options<Detailed>): Promi
 }
 
 export default get;
+export * from "./typing";
