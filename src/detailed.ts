@@ -309,7 +309,7 @@ export function transformDetailed(
                 nonPmrVer.mark === "template"
                   ? "typeAliasTemplate"
                   : "typeAlias",
-              description: `${nonPmrVer} using a polymorphic allocator`,
+              description: `${nonPmrVer.name} using a polymorphic allocator`,
             });
           } else {
             console.error(`Unknown PMR ${i.name}`);

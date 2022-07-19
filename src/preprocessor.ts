@@ -81,6 +81,12 @@ const PREPROCESSOR_TOKENS: PreprocessorToken[] = [
   { token: "line", type: "directiveName", link: "cpp/preprocessor/line" },
   { token: "pragma", type: "directiveName", link: "cpp/preprocessor/impl" },
   { token: "undef", type: "directiveName", link: "cpp/preprocessor/replace" },
+  {
+    token: "warning",
+    type: "directiveName",
+    since: "c++23",
+    link: "cpp/preprocessor/error",
+  },
 ];
 
 export function getPreprocessorTokens(): PreprocessorTokenIndex[] {
@@ -115,7 +121,7 @@ const PREDEFINED_MACROS: PredefinedMacro[] = [
   { macro: "__STDC_MB_MIGHT_NEQ_WC__" },
   { macro: "__STDCPP_THREADS__", since: "c++11" },
   {
-    macro: "__STDCPP_STRICt_POINTER_SAFETY__",
+    macro: "__STDCPP_STRICT_POINTER_SAFETY__",
     since: "c++11",
     removed: "c++23",
   },
