@@ -16,3 +16,91 @@
 pip install mwparserfromhell
 ```
 
+## 待补充符号
+
+下列符号（库设施、语法核心等）尚未收入 CppReference。
+- `<ranges>`
+  - `std::ranges::elements_of`（用于协程，见 `std::generator`）
+- `<format>`
+  - `std::basic_format_string`
+  - `std::format_string`
+  - `std::wformat_string`
+- `<flat_map>` 与 `<flat_set>`
+  - `std::sorted_unique_t`
+  - `std::sorted_unique`
+  - `std::flat_map`
+  - `std::flat_multimap`
+  - `std::flat_set`
+  - `std::flat_multiset`
+- `<generator>`
+  - `std::generator`
+- `<stdfloat>`
+  - `__STDCPP_FLOAT16_T__`（语核）
+  - `__STDCPP_FLOAT32_T__`（语核）
+  - `__STDCPP_FLOAT64_T__`（语核）
+  - `__STDCPP_FLOAT128_T__`（语核）
+  - `__STDCPP_BFLOAT16_T__`（语核）
+  - `std::float16_t`
+  - `std::float32_t`
+  - `std::float64_t`
+  - `std::float128_t`
+  - `std::bfloat16_t`
+- `<print>`
+  - `std::print`
+  - `std::println`
+  - `std::vprint_unicode`
+  - `std::vprint_nonunicode`
+- `<mdspan>`
+  - `std::extents`
+  - `std::dextents`
+  - `std::layout_left`
+  - `std::layout_right`
+  - `std::layout_stride`
+  - `std::default_accessor`
+  - `std::mdspan`
+- 语核部分的特性测试宏
+
+### 缺少详情（已打补丁）
+
+下列符号仍未收入 CppReference，但已经出现在符号索引中。
+- 迭代器（`<iterator>`）
+  - `std::basic_const_iterator`
+  - `std::const_iterator`
+  - `std::const_sentinel`
+  - `std::make_const_iterator`
+  - `std::make_const_sentinel`
+- STLv2 算法（`<algorithm>`）
+  - `std::ranges::fold_left`
+  - `std::ranges::fold_left_first`
+  - `std::ranges::fold_left_first_with_iter`
+  - `std::ranges::fold_left_with_iter`
+  - `std::ranges::fold_right`
+  - `std::ranges::fold_right_last`
+- 视图（`<ranges>`）
+  - `std::ranges::chunk_view`
+  - `std::views::chunk`
+  - `std::ranges::chunk_by_view`
+  - `std::views::chunk_by`
+  - `std::ranges::slide_view`
+  - `std::views::slide`
+  - `std::ranges::stride_view`
+  - `std::views::stride`
+
+### 有详情，但没有内容
+
+下列符号已经在 CppReference 中被一次或多次引用，但相关页面尚未创建。
+
+- `std::ranges::adjacent_view`
+- `std::views::adjacent`
+- `std::ranges::adjacent_transform_view`
+- `std::views::adjacent_transform`
+- `std::ranges::as_const_view`
+- `std::views::as_const`
+- `std::ranges::as_rvalue_view`
+- `std::views::as_rvalue`
+- `std::ranges::cartesian_product_view`
+- `std::views::cartesian_product`
+- `std::ranges::repeat_view`
+- `std::views::repeat`
+- `std::ranges::to`
+- `std::ranges::constant_range`

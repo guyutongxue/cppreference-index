@@ -27,6 +27,7 @@ export async function fetchDetailed() {
   const result: DetailedInfo[] = [];
   for (const { name: header, link } of headers) {
     if (viewedHeaders.has(link)) continue;
+    if (link.includes("redlink=1")) continue; // 未创建
     const html = await fetchSrc(link, true);
     const $ = load(html);
     $(".editsection,.mjax").remove();
