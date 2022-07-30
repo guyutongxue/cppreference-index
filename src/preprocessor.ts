@@ -8,15 +8,59 @@ import {
 } from "./typing";
 
 const PREPROCESSOR_TOKENS: PreprocessorToken[] = [
+  { token: "#define", type: "directiveName", link: "cpp/preprocessor/replace" },
   {
-    token: "__VA_ARGS__",
-    type: "replacement",
-    link: "cpp/preprocessor/replace",
+    token: "#elif",
+    type: "directiveName",
+    link: "cpp/preprocessor/conditional",
   },
   {
-    token: "__VA_OPT__",
-    type: "replacement",
-    link: "cpp/preprocessor/replace",
+    token: "#elifdef",
+    since: "c++23",
+    type: "directiveName",
+    link: "cpp/preprocessor/conditional",
+  },
+  {
+    token: "#elifndef",
+    since: "c++23",
+    type: "directiveName",
+    link: "cpp/preprocessor/conditional",
+  },
+  {
+    token: "#else",
+    type: "directiveName",
+    link: "cpp/preprocessor/conditional",
+  },
+  {
+    token: "#endif",
+    type: "directiveName",
+    link: "cpp/preprocessor/conditional",
+  },
+  { token: "#error", type: "directiveName", link: "cpp/preprocessor/error" },
+  { token: "#if", type: "directiveName", link: "cpp/preprocessor/conditional" },
+  {
+    token: "#ifdef",
+    type: "directiveName",
+    link: "cpp/preprocessor/conditional",
+  },
+  {
+    token: "#ifndef",
+    type: "directiveName",
+    link: "cpp/preprocessor/conditional",
+  },
+  {
+    token: "#include",
+    type: "directiveName",
+    link: "cpp/preprocessor/include",
+  },
+  { token: "#line", type: "directiveName", link: "cpp/preprocessor/line" },
+  { token: "#pragma", type: "directiveName", link: "cpp/preprocessor/impl" },
+  { token: "#undef", type: "directiveName", link: "cpp/preprocessor/replace" },
+  {
+    token: "#warning",
+    type: "directiveName",
+    since: "c++23",
+    link: "cpp/preprocessor/error",
   },
   {
     token: "__has_cpp_attribute",
@@ -31,62 +75,22 @@ const PREPROCESSOR_TOKENS: PreprocessorToken[] = [
     link: "cpp/preprocessor/include",
   },
   {
+    token: "__VA_ARGS__",
+    type: "replacement",
+    link: "cpp/preprocessor/replace",
+  },
+  {
+    token: "__VA_OPT__",
+    type: "replacement",
+    link: "cpp/preprocessor/replace",
+  },
+  {
     token: "_Pragma",
     since: "c++11",
     type: "operatorOutsideDirective",
     link: "cpp/preprocessor/impl",
   },
-  { token: "define", type: "directiveName", link: "cpp/preprocessor/replace" },
   { token: "defined", type: "operator", link: "cpp/preprocessor/conditional" },
-  {
-    token: "elif",
-    type: "directiveName",
-    link: "cpp/preprocessor/conditional",
-  },
-  {
-    token: "elifdef",
-    since: "c++23",
-    type: "directiveName",
-    link: "cpp/preprocessor/conditional",
-  },
-  {
-    token: "elifndef",
-    since: "c++23",
-    type: "directiveName",
-    link: "cpp/preprocessor/conditional",
-  },
-  {
-    token: "else",
-    type: "directiveName",
-    link: "cpp/preprocessor/conditional",
-  },
-  {
-    token: "endif",
-    type: "directiveName",
-    link: "cpp/preprocessor/conditional",
-  },
-  { token: "error", type: "directiveName", link: "cpp/preprocessor/error" },
-  { token: "if", type: "directiveName", link: "cpp/preprocessor/conditional" },
-  {
-    token: "ifdef",
-    type: "directiveName",
-    link: "cpp/preprocessor/conditional",
-  },
-  {
-    token: "ifndef",
-    type: "directiveName",
-    link: "cpp/preprocessor/conditional",
-  },
-  { token: "include", type: "directiveName", link: "cpp/preprocessor/include" },
-  { token: "line", type: "directiveName", link: "cpp/preprocessor/line" },
-  { token: "pragma", type: "directiveName", link: "cpp/preprocessor/impl" },
-  { token: "undef", type: "directiveName", link: "cpp/preprocessor/replace" },
-  {
-    token: "warning",
-    type: "directiveName",
-    since: "c++23",
-    link: "cpp/preprocessor/error",
-  },
 ];
 
 export function getPreprocessorTokens(): PreprocessorTokenIndex[] {
