@@ -119,12 +119,6 @@ export const NAMES_WITH_WRONG_TYPE = [
   { name: "std::in_place_index", type: "variableTemplate" as const },
   { name: "std::in_place_t", type: "class" as const },
   // Not yet finished in cppreference
-  ...generateRangeAdaptorObject(
-    "chunk",
-    "chunk_by",
-    "slide",
-    "stride"
-  ),
   { name: "std::basic_const_iterator", type: "classTemplate" as const },
   { name: "std::const_iterator", type: "typeAliasTemplate" as const },
   { name: "std::const_sentinel", type: "typeAliasTemplate" as const },

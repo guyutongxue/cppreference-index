@@ -24,7 +24,7 @@ export async function getHeaders(): Promise<HeaderIndex[]> {
           marks.since = text.substring(1, text.length - 1);
         }
       });
-      const description = tds.eq(1).text().trim();
+      const description = tds.eq(1).text().replace(/\s{2,}/g, " ").trim();
       if (!link) {
         throw new Error(`Link not found for header ${name}`);
       }

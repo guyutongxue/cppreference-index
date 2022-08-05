@@ -57,18 +57,6 @@ export async function fetchDetailed() {
           }
           const desc = children.eq(1).clone();
           const markElem = desc.find(".t-mark").remove();
-          // simplify inline code
-          desc.find(".source-cpp").each(function () {
-            $(this).html(
-              $(this)
-                .text()
-                .replaceAll("&", "&amp;")
-                .replaceAll("<", "&lt;")
-                .replaceAll(">", "&gt;")
-                .replaceAll('"', "&quot;")
-                .replaceAll("'", "&#039;")
-            );
-          });
           // replace <br> to \n
           desc.html(desc.html()?.replace(/<br\s*\/?>/gi, "\n") ?? "");
           const marks = markElem
@@ -80,7 +68,12 @@ export async function fetchDetailed() {
           if (isTypedef && marks.length === 0) {
             marks.push("typedef");
           }
-          return { header, names, description: desc.text().trim(), marks };
+          return { 
+            header, 
+            names, 
+            description: desc.text().replace(/\s{2,}/g, " ").trim(), 
+            marks 
+          };
         })
         .toArray()
     );
