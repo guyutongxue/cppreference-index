@@ -76,25 +76,23 @@ pip install mwparserfromhell
   - `std::ranges::fold_left_with_iter`
   - `std::ranges::fold_right`
   - `std::ranges::fold_right_last`
-- 视图（`<ranges>`）
-  - `std::ranges::chunk_view`
-  - `std::views::chunk`
-  - `std::ranges::chunk_by_view`
-  - `std::views::chunk_by`
-  - `std::ranges::slide_view`
-  - `std::views::slide`
-  - `std::ranges::stride_view`
-  - `std::views::stride`
 
 ### 有详情，但没有内容
 
 下列符号已经在 CppReference 中被一次或多次引用，但相关页面尚未创建。
 
-- `std::ranges::adjacent_view`
-- `std::views::adjacent`
+- `std::ranges::range_adaptor_closure`
 - `std::ranges::adjacent_transform_view`
 - `std::views::adjacent_transform`
 - `std::ranges::cartesian_product_view`
 - `std::views::cartesian_product`
 - `std::ranges::repeat_view`
 - `std::views::repeat`
+- `std::ranges::chunk_view`
+- `std::views::chunk`
+- `std::ranges::chunk_by_view`
+- `std::views::chunk_by`
+- `std::ranges::slide_view`
+- `std::views::slide`
+- `std::ranges::stride_view`
+- `std::views::stride`

@@ -5,13 +5,14 @@ type MwApiResult = {
 };
 
 export async function fetchSrc(page: string, parsed = false): Promise<string> {
-  const params = new URLSearchParams();
   console.log(`Fetching${parsed ? " parsed" : ""} ${page}...`);
   const prop = parsed ? "text" : "wikitext";
-  params.set("action", "parse");
-  params.set("format", "json");
-  params.set("page", page);
-  params.set("prop", prop);
+  const params = new URLSearchParams({
+    action: "parse",
+    format: "json",
+    page,
+    prop
+  });
   const result = (await fetch(
     `https://en.cppreference.com/mwiki/api.php?${params}`
   ).then((r) => r.json())) as MwApiResult;
