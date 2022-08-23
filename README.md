@@ -25,13 +25,6 @@ pip install mwparserfromhell
   - `std::basic_format_string`
   - `std::format_string`
   - `std::wformat_string`
-- `<flat_map>` 与 `<flat_set>`
-  - `std::sorted_unique_t`
-  - `std::sorted_unique`
-  - `std::flat_map`
-  - `std::flat_multimap`
-  - `std::flat_set`
-  - `std::flat_multiset`
 - `<generator>`
   - `std::generator`
 - `<stdfloat>`
@@ -96,3 +89,16 @@ pip install mwparserfromhell
 - `std::views::slide`
 - `std::ranges::stride_view`
 - `std::views::stride`
+- `std::unexpected`
+- `std::bad_expected_access`
+- `std::unexpect_t`
+- `std::unexpect`
+- `std::flat_set`
+- `std::flat_map`
+- `std::flat_multiset`
+- `std::flat_multimap`
+- `std::erase_if` (`std::flat_map` `std::flat_multimap` `std::flat_set` `std::flat_multiset`)
+- `std::sorted_equivalent`
+- `std::sorted_equivalent_t`
+- `std::sorted_unique_t`
+- `std::sorted_unique`
