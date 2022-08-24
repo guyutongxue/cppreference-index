@@ -2,6 +2,8 @@
 
 此项目遍历 [CppReference](http://en.cppreference.com) 上的若干页面、以及一些手动维护的数据，实现 C++ 源代码单词到对应页面的映射关系。
 
+> 官方的数据 [MediaWiki:Autolinker-definition-cpp](https://en.cppreference.com/mwiki/index.php?title=MediaWiki:Autolinker-definition-cpp&action=edit)（本应）与[离线文档发布](https://github.com/p12tic/cppreference-doc)同步，但目前存在大量缺失且更新不及时。
+
 目前已整理的数据：
 - 标准库符号；包括定义于 `std` 命名空间的符号及宏符号。（从[索引页面](https://en.cppreference.com/w/cpp/symbol_index)爬取）
 - 头文件；（从[头文件页面](https://en.cppreference.com/w/cpp/header)爬取）
@@ -51,7 +53,7 @@ pip install mwparserfromhell
   - `std::layout_stride`
   - `std::default_accessor`
   - `std::mdspan`
-- 语核部分的特性测试宏
+- C++23 语核部分的特性测试宏
 
 ### 缺少详情（已打补丁）
 
