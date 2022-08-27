@@ -46,13 +46,7 @@ pip install mwparserfromhell
   - `std::vprint_unicode`
   - `std::vprint_nonunicode`
 - `<mdspan>`
-  - `std::extents`
   - `std::dextents`
-  - `std::layout_left`
-  - `std::layout_right`
-  - `std::layout_stride`
-  - `std::default_accessor`
-  - `std::mdspan`
 - C++23 语核部分的特性测试宏
 
 ### 缺少详情（已打补丁）
@@ -104,3 +98,9 @@ pip install mwparserfromhell
 - `std::sorted_equivalent_t`
 - `std::sorted_unique_t`
 - `std::sorted_unique`
+- `std::extents`
+- `std::layout_left`
+- `std::layout_right`
+- `std::layout_stride`
+- `std::default_accessor`
+- `std::mdspan`
