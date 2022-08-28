@@ -85,8 +85,6 @@ pip install mwparserfromhell
 - `std::views::slide`
 - `std::ranges::stride_view`
 - `std::views::stride`
-- `std::unexpected`
-- `std::bad_expected_access`
 - `std::unexpect_t`
 - `std::unexpect`
 - `std::flat_set`
