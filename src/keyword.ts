@@ -151,7 +151,7 @@ const STD_ATTRIBUTES = [
   { attr: "nodiscard", since: "c++17" },
   { attr: "maybe_unused", since: "c++17" },
   { attr: "likely", since: "c++20" },
-  { attr: "unlikely", link: "cpp/language/attributs/likely", since: "c++20" },
+  { attr: "unlikely", link: "cpp/language/attributes/likely", since: "c++20" },
   { attr: "no_unique_address", since: "c++20" },
   { attr: "optimize_for_synchronized", ts: "tm" },
 ];

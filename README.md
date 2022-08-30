@@ -27,6 +27,10 @@ pip install mwparserfromhell
   - `std::basic_format_string`
   - `std::format_string`
   - `std::wformat_string`
+  - `std::formattable`
+  - `std::range_formatter`
+  - `std::range_format`
+  - `std::format_kind`
 - `<generator>`
   - `std::generator`
 - `<stdfloat>`
@@ -40,11 +44,6 @@ pip install mwparserfromhell
   - `std::float64_t`
   - `std::float128_t`
   - `std::bfloat16_t`
-- `<print>`
-  - `std::print`
-  - `std::println`
-  - `std::vprint_unicode`
-  - `std::vprint_nonunicode`
 - `<mdspan>`
   - `std::dextents`
 - C++23 语核部分的特性测试宏
@@ -102,3 +101,7 @@ pip install mwparserfromhell
 - `std::layout_stride`
 - `std::default_accessor`
 - `std::mdspan`
+- `std::print`
+- `std::println`
+- `std::vprint_unicode`
+- `std::vprint_nonunicode`
