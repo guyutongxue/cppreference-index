@@ -63,7 +63,7 @@ export const MISSING_HELPERS = [
     name: "std::disable_sized_sentinel_for",
     type: "variableTemplate" as const,
     description:
-      "used to prevent iterators and sentinels that can be subtracted but do not actually model sized_sentinel_for from satisfying the concept.",
+      "used to prevent iterators and sentinels that can be subtracted but do not actually model sized_sentinel_for from satisfying the concept",
   },
   // <ranges>
   {
@@ -118,6 +118,14 @@ export const NAMES_WITH_WRONG_TYPE = [
   { name: "std::in_place_type", type: "variableTemplate" as const },
   { name: "std::in_place_index", type: "variableTemplate" as const },
   { name: "std::in_place_t", type: "class" as const },
+  { name: "std::format_parse_context", type: "typedef" as const },
+  { name: "std::wformat_parse_context", type: "typedef" as const },
+  { name: "std::format_context", type: "typedef" as const },
+  { name: "std::wformat_context", type: "typedef" as const },
+  { name: "std::format_args", type: "typedef" as const },
+  { name: "std::wformat_args", type: "typedef" as const },
+  { name: "std::format_string", type: "aliasTemplate" as const },
+  { name: "std::wformat_string", type: "aliasTemplate" as const },
   // Not yet finished in cppreference
   { name: "std::basic_const_iterator", type: "classTemplate" as const },
   { name: "std::const_iterator", type: "typeAliasTemplate" as const },

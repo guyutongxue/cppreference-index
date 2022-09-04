@@ -2,4 +2,5 @@
 import get from "..";
 import { argv } from "node:process";
 
-get({ writeToFile: argv[2], detailedSymbols: true });
+get({ writeToFile: argv[2], detailedSymbols: true })
+  .catch(e => console.error(e));

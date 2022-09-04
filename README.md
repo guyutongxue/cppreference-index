@@ -24,9 +24,6 @@ pip install mwparserfromhell
 - `<ranges>`
   - `std::ranges::elements_of`（用于协程，见 `std::generator`）
 - `<format>`
-  - `std::basic_format_string`
-  - `std::format_string`
-  - `std::wformat_string`
   - `std::formattable`
   - `std::range_formatter`
   - `std::range_format`

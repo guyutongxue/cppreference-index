@@ -122,7 +122,7 @@ const PREDEFINED_MACROS: PredefinedMacro[] = [
   { macro: "__STDC__" },
   { macro: "__STDC_VERSION__", since: "c++11" },
   { macro: "__STDC_ISO_10646__", since: "c++11" },
-  { macro: "__STDC_MB_MIGHT_NEQ_WC__" },
+  { macro: "__STDC_MB_MIGHT_NEQ_WC__", since: "c++11" },
   { macro: "__STDCPP_THREADS__", since: "c++11" },
   {
     macro: "__STDCPP_STRICT_POINTER_SAFETY__",
