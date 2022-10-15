@@ -68,11 +68,14 @@ export async function fetchDetailed() {
           if (isTypedef && marks.length === 0) {
             marks.push("typedef");
           }
-          return { 
-            header, 
-            names, 
-            description: desc.text().replace(/\s{2,}/g, " ").trim(), 
-            marks 
+          return {
+            header,
+            names,
+            description: desc
+              .text()
+              .replace(/\s{2,}/g, " ")
+              .trim(),
+            marks,
           };
         })
         .toArray()
@@ -321,7 +324,12 @@ export function transformDetailed(
               i.name.length - 7
             )}`,
           });
-        } else if (i.name.endsWith("_t")) {
+        } else if (
+          i.name.endsWith("_t") &&
+          generated.find(
+            (s) => s.name === i.name.substring(0, i.name.length - 2)
+          )
+        ) {
           // Type traits with C++17 helpers
           combined.push({
             ...i,
@@ -331,7 +339,12 @@ export function transformDetailed(
               i.name.length - 2
             )}`,
           });
-        } else if (i.name.endsWith("_v")) {
+        } else if (
+          i.name.endsWith("_v") &&
+          generated.find(
+            (s) => s.name === i.name.substring(0, i.name.length - 2)
+          )
+        ) {
           // Type traits with C++17 helpers
           combined.push({
             ...i,
