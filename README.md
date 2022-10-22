@@ -94,8 +94,3 @@ pip install mwparserfromhell
 - `std::layout_right`
 - `std::layout_stride`
 - `std::default_accessor`
-- `std::mdspan`
-- `std::print`
-- `std::println`
-- `std::vprint_unicode`
-- `std::vprint_nonunicode`

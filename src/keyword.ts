@@ -153,6 +153,7 @@ const STD_ATTRIBUTES = [
   { attr: "likely", since: "c++20" },
   { attr: "unlikely", link: "cpp/language/attributes/likely", since: "c++20" },
   { attr: "no_unique_address", since: "c++20" },
+  { attr: "assume", since: "c++23" },
   { attr: "optimize_for_synchronized", ts: "tm" },
 ];
 
