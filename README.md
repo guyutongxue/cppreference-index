@@ -72,8 +72,6 @@ pip install mwparserfromhell
 - `std::views::repeat`
 - `std::ranges::chunk_view`
 - `std::views::chunk`
-- `std::ranges::chunk_by_view`
-- `std::views::chunk_by`
 - `std::ranges::slide_view`
 - `std::views::slide`
 - `std::ranges::stride_view`
