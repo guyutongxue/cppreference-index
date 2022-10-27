@@ -387,7 +387,6 @@ export function transformDetailed(
             continue;
           }
           // Nothing I can do now. Just leave it alone.
-          console.log(i.name);
           if (i.symbolType === "template") {
             i.symbolType = "other";
           }
@@ -420,6 +419,9 @@ export function transformDetailed(
     const err = NAMES_WITH_WRONG_TYPE.find((i) => i.name === c.name);
     if (err) {
       c.symbolType = err.type;
+    }
+    if (c.symbolType === "other") {
+      console.log(c.name);
     }
   }
 

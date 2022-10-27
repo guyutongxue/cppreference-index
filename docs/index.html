@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<title>CppReference Index</title>
+<style>
+  body {
+    font-family: DejaVuSans, "DejaVu Sans", arial, sans-serif;
+    font-size: 0.8em;
+    max-width: 60em;
+    margin: 0 auto;
+  }
+  #dscTable {
+    border-spacing: 0;
+    margin: 1em 0;
+    width: 100%;
+  }
+
+  #dscTable a {
+    text-decoration: none;
+    color: #0645ad;
+    background: none;
+  }
+  #dscTable a:visited {
+    color: #0b0080;
+  }
+
+  #dscTable a:hover {
+    text-decoration: underline;
+  }
+
+  .t-dsc > td {
+    border-top: 1px solid #cccccc;
+  }
+  .t-dsc:last-child > td {
+    border-bottom: 1px solid #cccccc;
+  }
+
+  .t-dsc > td:first-child {
+    width: 0%;
+    line-height: 1.2em;
+    padding: 0.2em 0 0.25em 0.75em;
+    /* white-space: nowrap; */
+  }
+
+  .t-dsc > td:last-child {
+    line-height: 1.1em;
+    padding-left: 0.75em;
+    white-space: normal;
+  }
+
+  .t-mark {
+    color: #008000;
+    font-size: 0.8em;
+  }
+
+  .t-dsc-member-div > div {
+    padding: 0;
+    display: inline-table;
+    vertical-align: middle;
+  }
+
+  .t-dsc-member-div > div:nth-child(1) {
+    font-weight: bold;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+      "Courier New", monospace;
+  }
+
+  .t-dsc-member-div > div:nth-child(2) {
+    padding-left: 0.2em;
+  }
+
+  .t-lines {
+    display: table;
+  }
+
+  .t-lines > span {
+    display: table-row;
+  }
+</style>
+<h1>CppReference Index</h1>
+<p>
+  You can use <kbd>Ctrl</kbd>+<kbd>F</kbd> to search for this page, or just use
+  <a href="https://cppref.cf">cppref.cf</a> forwarding service.
+</p>
+<div id="loading">Loading...</div>
+<table id="dscTable">
+  <tbody></tbody>
+</table>
+<script type="module">
+  // @ts-check
+
+  const DATA_URL = `https://cdn.jsdelivr.net/npm/@gytx/cppreference-index/dist/generated.json`;
+  const table = document.querySelector("#dscTable tbody");
+  function insert(data) {
+    for (const item of data) {
+      const tr = document.createElement("tr");
+      tr.classList.add("t-dsc");
+      const td1 = document.createElement("td");
+      td1.classList.add("t-dsc-member-div");
+      const div1 = document.createElement("div");
+      const a = document.createElement("a");
+      a.setAttribute("href", `https://en.cppreference.com/w/${item.link}`);
+      a.setAttribute("target", "_blank");
+      a.setAttribute("rel", "noreferrer");
+      a.textContent = item.name;
+      div1.append(a);
+      td1.append(div1);
+      if (Object.keys(item.marks).length) {
+        const div2 = document.createElement("div");
+        div2.classList.add("t-lines");
+        if ("since" in item.marks) {
+          const m = document.createElement("span");
+          m.classList.add("t-mark");
+          m.textContent = `(${item.marks.since.toUpperCase()})`;
+          div2.append(m);
+        }
+        if ("deprecated" in item.marks) {
+          const m = document.createElement("span");
+          m.classList.add("t-mark");
+          m.textContent = `(deprecated from ${item.marks.deprecated.toUpperCase()})`;
+          div2.append(m);
+        }
+        if ("removed" in item.marks) {
+          const m = document.createElement("span");
+          m.classList.add("t-mark");
+          m.textContent = `(removed from ${item.marks.removed.toUpperCase()})`;
+          div2.append(m);
+        }
+        td1.append(div2);
+      }
+      const td2 = document.createElement("td");
+      if (item.description) {
+        const description = document.createTextNode(item.description ?? "");
+        td2.append(description, document.createElement("br"));
+      }
+      const tySpan = document.createElement("span");
+      tySpan.classList.add("t-mark");
+      let type = "other";
+      switch (item.type) {
+        case "symbol": {
+          switch (item.symbolType) {
+            case "concept":
+              type = "concept";
+              break;
+            case "class":
+              type = "class";
+              break;
+            case "classTemplate":
+              type = "class template";
+              break;
+            case "classTemplateSpecialization":
+              type = "class template specialization";
+              break;
+            case "typeAlias":
+              type = "type alias";
+              break;
+            case "typeAliasTemplate":
+              type = "type alias template";
+              break;
+            case "function":
+              type = "function";
+              break;
+            case "functionTemplate":
+              type = "function template";
+              break;
+            case "enumeration":
+              type = "enumeration";
+              break;
+            case "enumerator":
+              type = "enumerator";
+              break;
+            case "macro":
+              type = "macro";
+              break;
+            case "functionLikeMacro":
+              type = "function like macro";
+              break;
+            case "constant":
+              type = "constant";
+              break;
+            case "niebloid":
+              type = "niebloid";
+              break;
+            case "object":
+              type = "object";
+              break;
+            case "variableTemplate":
+              type = "variable template";
+              break;
+            case "namespace":
+              type = "namespace";
+              break;
+          }
+          break;
+        }
+        case "preprocessorToken": {
+          switch (item.tokenType) {
+            case "directiveName":
+              type = "preprocessor directive";
+              break;
+            case "operator":
+            case "operator outside directive":
+              type = "preprocessor operator";
+              break;
+            case "replacement":
+              type = "preprocessor token";
+              break;
+          }
+          break;
+        }
+        default: {
+          type = item.type;
+          break;
+        }
+      }
+      tySpan.textContent = `(${type})`;
+      td2.append(tySpan);
+      tr.append(td1, td2);
+      table.append(tr);
+    }
+    document.querySelector("#loading").remove();
+  }
+  fetch(DATA_URL)
+    .then((r) => r.json())
+    .then((data) => insert(data.sort((a, b) => a.name.localeCompare(b.name))));
+</script>

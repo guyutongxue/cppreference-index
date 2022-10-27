@@ -23,8 +23,6 @@ pip install mwparserfromhell
 下列符号（库设施、语法核心等）尚未收入 CppReference。
 - `<ranges>`
   - `std::ranges::elements_of`（用于协程，见 `std::generator`）
-  - `std::views::pairwise`
-  - `std::views::pairwise_transform`
 - `<format>`
   - `std::formattable`
   - `std::range_formatter`

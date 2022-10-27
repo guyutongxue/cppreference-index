@@ -98,6 +98,16 @@ export const MISSING_HELPERS = [
     type: "typeAliasTemplate" as const,
     description: "std::ranges::basic_istream_view<_, wchar_t>",
   },
+  {
+    name: "std::views::pairwise",
+    type: "constant" as const,
+    description: "std::views::adjacent<2>"
+  },
+  {
+    name: "std::views::pairwise_transform",
+    type: "constant" as const,
+    description: "std::views::adjacent_transform<2>"
+  }
 ];
 
 export const MISSING_RETURN_TYPES = [
