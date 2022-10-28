@@ -116,13 +116,13 @@
         if ("deprecated" in item.marks) {
           const m = document.createElement("span");
           m.classList.add("t-mark");
-          m.textContent = `(deprecated from ${item.marks.deprecated.toUpperCase()})`;
+          m.textContent = `(deprecated in ${item.marks.deprecated.toUpperCase()})`;
           div2.append(m);
         }
         if ("removed" in item.marks) {
           const m = document.createElement("span");
           m.classList.add("t-mark");
-          m.textContent = `(removed from ${item.marks.removed.toUpperCase()})`;
+          m.textContent = `(removed in ${item.marks.removed.toUpperCase()})`;
           div2.append(m);
         }
         td1.append(div2);
