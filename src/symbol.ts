@@ -67,7 +67,7 @@ async function namespaceToIndexItems(
 async function toIndexItems(original: SimplifiedNode[], options: Options) {
   function isItemTemplate(i: SimplifiedNode) {
     return (
-      typeof i === "object" && ["ltt", "ltf", "rlt", "rlpt"].includes(i.name)
+      typeof i === "object" && ["ltt", "ltf", "ltpf", "ltp", "rlt", "rlpt"].includes(i.name)
     );
   }
 
@@ -95,20 +95,15 @@ async function toIndexItems(original: SimplifiedNode[], options: Options) {
         } else {
           // other names
           const link = now.params["1"];
-          let name = now.params["2"] ?? link.split("/").pop();
-          let template = false;
-          if (name.endsWith("<>")) {
-            name = name.substring(0, name.length - 2);
-            template = true;
-          }
+          const name = now.params["2"] ?? link.split("/").pop();
           pending = {
             namespace: options.namespace,
             name,
             link,
             modifiers: {
               namespace: false,
-              function: now.name === "ltf",
-              template,
+              function: now.name.includes("f"),
+              template: now.name.includes("t"),
             },
             marks: {},
           };
@@ -121,9 +116,13 @@ async function toIndexItems(original: SimplifiedNode[], options: Options) {
     } else {
       // note
       const trimmed = now.trim();
-      if (trimmed.startsWith("(") && trimmed.endsWith(")")) {
-        pending &&
-          (pending.note = trimmed.substring(1, trimmed.length - 1));
+      if (trimmed === '(') {
+        const node = original[i + 1];
+        if (typeof node === "object" && pending) {
+          const note = node.params["1"];
+          pending.note = note;
+          i += 2;
+        }
       }
     }
   }

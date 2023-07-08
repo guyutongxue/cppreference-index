@@ -208,6 +208,11 @@ export function transformDetailed(
         i.name = "std::chrono::" + i.name;
       }
     } else if (
+      i.header === "<thread>" &&
+      ["yield", "get_id", "sleep_for", "sleep_until"].includes(i.name)
+    ) {
+      i.name = "std::this_thread::" + i.name;
+    } else if (
       [
         "sequenced_policy",
         "parallel_policy",

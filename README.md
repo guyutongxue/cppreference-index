@@ -28,17 +28,6 @@ pip install mwparserfromhell
   - `std::range_formatter`
   - `std::range_format`
   - `std::format_kind`
-- `<generator>`
-  - `std::generator`
-- `<stdfloat>`
-  - `__STDCPP_FLOAT16_T__`（语核）
-  - `__STDCPP_FLOAT32_T__`（语核）
-  - `__STDCPP_FLOAT64_T__`（语核）
-  - `__STDCPP_FLOAT128_T__`（语核）
-  - `__STDCPP_BFLOAT16_T__`（语核）
-- `<mdspan>`
-  - `std::dextents`
-- C++23 语核部分的特性测试宏
 
 ### 缺少详情（已打补丁）
 
@@ -49,33 +38,11 @@ pip install mwparserfromhell
   - `std::const_sentinel`
   - `std::make_const_iterator`
   - `std::make_const_sentinel`
-- STLv2 算法（`<algorithm>`）
-  - `std::ranges::fold_left`
-  - `std::ranges::fold_left_first`
-  - `std::ranges::fold_left_first_with_iter`
-  - `std::ranges::fold_left_with_iter`
-  - `std::ranges::fold_right`
-  - `std::ranges::fold_right_last`
 
 ### 有详情，但没有内容
 
 下列符号已经在 CppReference 中被一次或多次引用，但相关页面尚未创建。
 
-- `std::ranges::range_adaptor_closure`
-- `std::ranges::adjacent_transform_view`
-- `std::views::adjacent_transform`
-- `std::ranges::cartesian_product_view`
-- `std::views::cartesian_product`
-- `std::ranges::repeat_view`
-- `std::views::repeat`
-- `std::ranges::chunk_view`
-- `std::views::chunk`
-- `std::ranges::slide_view`
-- `std::views::slide`
-- `std::ranges::stride_view`
-- `std::views::stride`
-- `std::unexpect_t`
-- `std::unexpect`
 - `std::flat_set`
 - `std::flat_map`
 - `std::flat_multiset`
@@ -85,7 +52,6 @@ pip install mwparserfromhell
 - `std::sorted_equivalent_t`
 - `std::sorted_unique_t`
 - `std::sorted_unique`
-- `std::extents`
 - `std::layout_left`
 - `std::layout_right`
 - `std::layout_stride`

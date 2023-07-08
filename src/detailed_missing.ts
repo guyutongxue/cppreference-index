@@ -58,6 +58,27 @@ export const MISSING_ENUMERATORS = [
 ];
 
 export const MISSING_HELPERS = [
+  // <utility>
+  {
+    name: "std::make_integer_sequence",
+    type: "typeAliasTemplate" as const,
+    description: "std::integer_sequence<T, 0, 1, 2, ..., N - 1>"
+  },
+  {
+    name: "std::index_sequence",
+    type: "typeAliasTemplate" as const,
+    description: "std::integer_sequence<std::size_t, Ints...>"
+  },
+  {
+    name: "std::make_index_sequence",
+    type: "typeAliasTemplate" as const,
+    description: "std::make_integer_sequence<std::size_t, N>"
+  },
+  {
+    name: "std::index_sequence_for",
+    type: "typeAliasTemplate" as const,
+    description: "std::make_index_sequence<sizeof...(Ts)>"
+  },
   // <iterator>
   {
     name: "std::disable_sized_sentinel_for",
@@ -107,6 +128,12 @@ export const MISSING_HELPERS = [
     name: "std::views::pairwise_transform",
     type: "constant" as const,
     description: "std::views::adjacent_transform<2>"
+  },
+  // <mdspan>
+  {
+    name: "std::dextents",
+    type: "classTemplate" as const,
+    description: "A convenient alias template for an all-dynamic extents"
   }
 ];
 
@@ -148,13 +175,6 @@ export const NAMES_WITH_WRONG_TYPE = [
   { name: "std::const_sentinel", type: "typeAliasTemplate" as const },
   { name: "std::make_const_iterator", type: "functionTemplate" as const },
   { name: "std::make_const_sentinel", type: "functionTemplate" as const },
-  
-  { name: "std::ranges::fold_left", type: "niebloid" as const },
-  { name: "std::ranges::fold_left_first", type: "niebloid" as const },
-  { name: "std::ranges::fold_left_first_with_iter", type: "niebloid" as const },
-  { name: "std::ranges::fold_left_with_iter", type: "niebloid" as const },
-  { name: "std::ranges::fold_right", type: "niebloid" as const },
-  { name: "std::ranges::fold_right_last", type: "niebloid" as const },
 ];
 
 function generateRangeAdaptorObject(...args: string[]) {

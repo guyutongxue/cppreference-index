@@ -1,12 +1,12 @@
 {
   "name": "@gytx/cppreference-index",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "generate": "node --experimental-specifier-resolution=node ./bin/generate.mjs ./dist",
+    "generate": "node ./bin/generate.mjs ./dist",
     "build": "rimraf ./dist && tsup",
     "prepublishOnly": "pnpm build && pnpm generate",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,7 +17,8 @@
   "dependencies": {
     "cheerio": "1.0.0-rc.12",
     "entities": "^4.3.1",
-    "node-fetch": "^3.2.6"
+    "node-fetch": "^3.2.6",
+    "proxy-agent": "^6.2.1"
   },
   "devDependencies": {
     "@types/node": "^18.0.3",

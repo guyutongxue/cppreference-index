@@ -1,8 +1,11 @@
 import fetch from "node-fetch";
+import { ProxyAgent } from "proxy-agent";
 
 type MwApiResult = {
   parse: Record<"text" | "wikitext", { "*": string }>;
 };
+
+const agent = new ProxyAgent();
 
 export async function fetchSrc(page: string, parsed = false): Promise<string> {
   console.log(`Fetching${parsed ? " parsed" : ""} ${page}...`);
@@ -14,7 +17,8 @@ export async function fetchSrc(page: string, parsed = false): Promise<string> {
     prop
   });
   const result = (await fetch(
-    `https://en.cppreference.com/mwiki/api.php?${params}`
+    `https://en.cppreference.com/mwiki/api.php?${params}`,
+    { agent }
   ).then((r) => r.json())) as MwApiResult;
   console.log("Fetch done");
   return result.parse[prop]["*"];

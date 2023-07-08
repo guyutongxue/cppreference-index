@@ -119,6 +119,26 @@ const PREDEFINED_MACROS: PredefinedMacro[] = [
   { macro: "__DATE__" },
   { macro: "__TIME__" },
   { macro: "__STDCPP_DEFAULT_NEW_ALIGNMENT__", since: "c++17" },
+  {
+    macro: "__STDCPP_BFLOAT16_T__",
+    since: "c++23",
+  },
+  {
+    macro: "__STDCPP_FLOAT16_T__",
+    since: "c++23",
+  },
+  {
+    macro: "__STDCPP_FLOAT32_T__",
+    since: "c++23",
+  },
+  {
+    macro: "__STDCPP_FLOAT64_T__",
+    since: "c++23",
+  },
+  {
+    macro: "__STDCPP_FLOAT128_T__",
+    since: "c++23",
+  },
   { macro: "__STDC__" },
   { macro: "__STDC_VERSION__", since: "c++11" },
   { macro: "__STDC_ISO_10646__", since: "c++11" },

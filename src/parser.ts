@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 async function launchPython(filepath: string, input: string): Promise<string> {
   return new Promise<string>((resolve, reject) => {
-    const process = cp.spawn("python3", [filepath]);
+    const process = cp.spawn("python", [filepath]);
     process.on("close", (code) => {
       if (code === 0) {
         resolve(stdout);

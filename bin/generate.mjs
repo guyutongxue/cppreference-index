@@ -1,5 +1,5 @@
 // @ts-check
-import get from "..";
+import get from "../dist/index.js";
 import { argv } from "node:process";
 import { writeFile } from "node:fs/promises";
 import path from "node:path";
