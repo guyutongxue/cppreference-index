@@ -129,12 +129,6 @@ export const MISSING_HELPERS = [
     type: "constant" as const,
     description: "std::views::adjacent_transform<2>"
   },
-  // <mdspan>
-  {
-    name: "std::dextents",
-    type: "classTemplate" as const,
-    description: "A convenient alias template for an all-dynamic extents"
-  }
 ];
 
 export const MISSING_RETURN_TYPES = [
@@ -163,18 +157,6 @@ export const NAMES_WITH_WRONG_TYPE = [
   { name: "std::wformat_args", type: "typeAlias" as const },
   { name: "std::format_string", type: "typeAliasTemplate" as const },
   { name: "std::wformat_string", type: "typeAliasTemplate" as const },
-  // Not yet finished in cppreference
-  { name: "std::float16_t", type: "typeAlias" as const },
-  { name: "std::float32_t", type: "typeAlias" as const },
-  { name: "std::float64_t", type: "typeAlias" as const },
-  { name: "std::float128_t", type: "typeAlias" as const },
-  { name: "std::bfloat16_t", type: "typeAlias" as const },
-
-  { name: "std::basic_const_iterator", type: "classTemplate" as const },
-  { name: "std::const_iterator", type: "typeAliasTemplate" as const },
-  { name: "std::const_sentinel", type: "typeAliasTemplate" as const },
-  { name: "std::make_const_iterator", type: "functionTemplate" as const },
-  { name: "std::make_const_sentinel", type: "functionTemplate" as const },
 ];
 
 function generateRangeAdaptorObject(...args: string[]) {

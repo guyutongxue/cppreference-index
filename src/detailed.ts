@@ -85,7 +85,7 @@ export async function fetchDetailed() {
   return result;
 }
 
-function markToType(mark: string, name?: string): DetailedSymbolType {
+function markToType(mark: string, name: string): DetailedSymbolType {
   switch (mark) {
     case "concept":
       return "concept";
@@ -125,6 +125,12 @@ function markToType(mark: string, name?: string): DetailedSymbolType {
       return "constant";
     case "global object":
       return "object";
+    case "tag":
+      if (name.endsWith("_t")) {
+        return "class";
+      } else {
+        return "constant";
+      }
     default:
       console.error(`Unknown type ${mark} (${name})`);
       return "other";

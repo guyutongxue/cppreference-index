@@ -23,36 +23,11 @@ pip install mwparserfromhell
 下列符号（库设施、语法核心等）尚未收入 CppReference。
 - `<ranges>`
   - `std::ranges::elements_of`（用于协程，见 `std::generator`）
-- `<format>`
-  - `std::formattable`
-  - `std::range_formatter`
-  - `std::range_format`
-  - `std::format_kind`
 
 ### 缺少详情（已打补丁）
 
 下列符号仍未收入 CppReference，但已经出现在符号索引中。
-- 迭代器（`<iterator>`）
-  - `std::basic_const_iterator`
-  - `std::const_iterator`
-  - `std::const_sentinel`
-  - `std::make_const_iterator`
-  - `std::make_const_sentinel`
 
 ### 有详情，但没有内容
 
 下列符号已经在 CppReference 中被一次或多次引用，但相关页面尚未创建。
-
-- `std::flat_set`
-- `std::flat_map`
-- `std::flat_multiset`
-- `std::flat_multimap`
-- `std::erase_if` (`std::flat_map` `std::flat_multimap` `std::flat_set` `std::flat_multiset`)
-- `std::sorted_equivalent`
-- `std::sorted_equivalent_t`
-- `std::sorted_unique_t`
-- `std::sorted_unique`
-- `std::layout_left`
-- `std::layout_right`
-- `std::layout_stride`
-- `std::default_accessor`
