@@ -21,13 +21,13 @@ pip install mwparserfromhell
 ## 待补充符号
 
 下列符号（库设施、语法核心等）尚未收入 CppReference。
+
+### C++23
+
 - `<ranges>`
-  - `std::ranges::elements_of`（用于协程，见 `std::generator`）
+  - `std::ranges::elements_of`
 
-### 缺少详情（已打补丁）
+### C++26
 
-下列符号仍未收入 CppReference，但已经出现在符号索引中。
+See [#5](https://github.com/guyutongxue/cppreference-index/issues/5)
 
-### 有详情，但没有内容
-
-下列符号已经在 CppReference 中被一次或多次引用，但相关页面尚未创建。

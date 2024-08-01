@@ -1,3 +1,32 @@
+export const MISSING_T_HELPERS = [
+  // <compare>
+  "std::common_comparison_category",
+  "std::compare_three_way_result",
+  // <tuple>
+  "std::tuple_element",
+];
+
+export const MISSING_V_HELPERS = [
+  // <functional>
+  "std::is_placeholder",
+  "std::is_bind_expression",
+  // <system_error>
+  "std::is_error_condition_enum",
+  // <execution>
+  "std::is_execution_policy",
+  // <ratio>
+  "std::ratio_equal",
+  "std::ratio_greater",
+  "std::ratio_greater_equal",
+  "std::ratio_less",
+  "std::ratio_less_equal",
+  "std::ratio_not_equal",
+  // <tuple>
+  "std::tuple_size",
+  // <memory>
+  "std::uses_allocator"
+]
+
 export const MISSING_ENUMERATORS = [
   // std::float_round_style
   // https://en.cppreference.com/w/cpp/types/numeric_limits/float_round_style
@@ -140,6 +169,12 @@ export const MISSING_RETURN_TYPES = [
   },
   {
     name: "std::format_to_n_result",
+  },
+  {
+    name: "std::linalg::setup_givens_rotation_result",
+  },
+  {
+    name: "std::linalg::sum_of_squares_result",
   },
   // return type in std::ranges:: already included
 ];

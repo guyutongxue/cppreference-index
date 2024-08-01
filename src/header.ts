@@ -2,6 +2,11 @@ import { load } from "cheerio";
 import { fetchSrc } from "./fetch";
 import { HeaderIndex, Marks } from "./typing";
 
+function order(headerName: string): number {
+  if (headerName === "<type_traits>") return -1;
+  else return 0;
+}
+
 export async function getHeaders(): Promise<HeaderIndex[]> {
   const html = await fetchSrc("cpp/header", true);
   const $ = load(html);
@@ -31,5 +36,5 @@ export async function getHeaders(): Promise<HeaderIndex[]> {
       return { type: "header", link, name, marks, description } as HeaderIndex;
     })
     .toArray();
-  return headers;
+  return headers.sort((a, b) => order(a.name) - order(b.name));
 }

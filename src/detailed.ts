@@ -4,6 +4,8 @@ import {
   MISSING_ENUMERATORS,
   MISSING_RETURN_TYPES,
   NAMES_WITH_WRONG_TYPE,
+  MISSING_T_HELPERS,
+  MISSING_V_HELPERS,
 } from "./detailed_missing";
 import { fetchSrc } from "./fetch";
 import { getHeaders } from "./header";
@@ -209,6 +211,8 @@ export function transformDetailed(
     } else if (i.header === "<memory_resource>") {
       // https://en.cppreference.com/w/cpp/header/memory_resource
       i.name = "std::pmr::" + i.name;
+    } else if (i.header === "<linalg>") {
+      i.name = "std::linalg::" + i.name;
     } else if (i.header === "<chrono>") {
       if (!i.name.includes("::")) {
         i.name = "std::chrono::" + i.name;
@@ -337,9 +341,12 @@ export function transformDetailed(
           });
         } else if (
           i.name.endsWith("_t") &&
-          generated.find(
-            (s) => s.name === i.name.substring(0, i.name.length - 2)
-          )
+          (result.find(
+            (t) =>
+              t.header === "<type_traits>" &&
+              t.name === i.name.substring(0, i.name.length - 2)
+          ) ||
+            MISSING_T_HELPERS.includes(i.name.substring(0, i.name.length - 2)))
         ) {
           // Type traits with C++17 helpers
           combined.push({
@@ -352,9 +359,12 @@ export function transformDetailed(
           });
         } else if (
           i.name.endsWith("_v") &&
-          generated.find(
-            (s) => s.name === i.name.substring(0, i.name.length - 2)
-          )
+          (result.find(
+            (t) =>
+              t.header === "<type_traits>" &&
+              t.name === i.name.substring(0, i.name.length - 2)
+          ) ||
+            MISSING_V_HELPERS.includes(i.name.substring(0, i.name.length - 2)))
         ) {
           // Type traits with C++17 helpers
           combined.push({
@@ -389,7 +399,8 @@ export function transformDetailed(
           if (result) {
             combined.push({
               ...i,
-              symbolType: "class",
+              symbolType:
+                i.symbolType === "template" ? "classTemplate" : "class",
               description: `Return type of ${i.name.substring(
                 0,
                 i.name.length - 7
