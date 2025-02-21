@@ -32,6 +32,7 @@ const KEYWORDS = [
   { keyword: "constinit", since: "c++20" },
   { keyword: "const_cast" },
   { keyword: "continue" },
+  { keyword: "contract_assert", since: "c++26" },
   { keyword: "co_await", since: "c++20" },
   { keyword: "co_return", since: "c++20" },
   { keyword: "co_yield", since: "c++20" },
@@ -158,6 +159,7 @@ const STD_ATTRIBUTES = [
   { attr: "unlikely", link: "cpp/language/attributes/likely", since: "c++20" },
   { attr: "no_unique_address", since: "c++20" },
   { attr: "assume", since: "c++23" },
+  { attr: "indeterminate", since: "c++26" },
   { attr: "optimize_for_synchronized", ts: "tm" },
 ];
 

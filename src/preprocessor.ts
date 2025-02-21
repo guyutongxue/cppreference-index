@@ -53,6 +53,12 @@ const PREPROCESSOR_TOKENS: PreprocessorToken[] = [
     type: "directiveName",
     link: "cpp/preprocessor/include",
   },
+  {
+    token: "#embed",
+    since: "c++26",
+    type: "directiveName",
+    link: "cpp/preprocessor/embed",
+  },
   { token: "#line", type: "directiveName", link: "cpp/preprocessor/line" },
   { token: "#pragma", type: "directiveName", link: "cpp/preprocessor/impl" },
   { token: "#undef", type: "directiveName", link: "cpp/preprocessor/replace" },
@@ -73,6 +79,12 @@ const PREPROCESSOR_TOKENS: PreprocessorToken[] = [
     since: "c++17",
     type: "operator",
     link: "cpp/preprocessor/include",
+  },
+  {
+    token: "__has_embed",
+    since: "c++26",
+    type: "operator",
+    link: "cpp/feature_test",
   },
   {
     token: "__VA_ARGS__",
