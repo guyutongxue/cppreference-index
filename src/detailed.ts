@@ -91,8 +91,6 @@ function markToType(mark: string, name: string): DetailedSymbolType {
   switch (mark) {
     case "concept":
       return "concept";
-    case "customization point object":
-      return "constant";
     case "class template":
       return "classTemplate";
     case "class template specialization":
@@ -119,10 +117,10 @@ function markToType(mark: string, name: string): DetailedSymbolType {
       return "constant";
     case "alias template":
       return "typeAliasTemplate";
-    case "niebloid":
-      return "niebloid";
     case "macro variable":
       return "macro";
+    case "customization point object":
+    case "algorithm function object":
     case "range adaptor object":
       return "constant";
     case "global object":

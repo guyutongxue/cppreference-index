@@ -5,7 +5,8 @@ export default defineConfig({
   entry: ["src/index.ts"],
   format: "esm",
   dts: true,
-  minify: true,
+  // minify: true,
+  sourcemap: true,
   esbuildPlugins: [
     copy({
       assets: [

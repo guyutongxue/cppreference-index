@@ -59,7 +59,6 @@ export type DetailedSymbolType =
   | "macro"
   | "functionLikeMacro"
   | "constant"
-  | "niebloid"
   | "object"
   | "variableTemplate"
   | "namespace"

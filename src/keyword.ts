@@ -104,20 +104,24 @@ const KEYWORDS = [
 ];
 
 const IDENTIFIERS_W_SPECIAL_MEANING = [
-  { keyword: "final", since: "c++11", link: "cpp/language/final" },
-  { keyword: "override", since: "c++11", link: "cpp/language/override" },
+  { keyword: "final", since: "c++11", link: "cpp/identifier_with_special_meaning/final" },
+  { keyword: "override", since: "c++11", link: "cpp/identifier_with_special_meaning/override" },
   {
     keyword: "transaction_safe",
     ts: "tm",
-    link: "cpp/language/transactional_memory",
+    link: "cpp/keyword/transactional_memory",
   },
   {
     keyword: "transaction_safe_dynamic",
     ts: "tm",
-    link: "cpp/language/transactional_memory",
+    link: "cpp/keyword/transactional_memory",
   },
-  { keyword: "import", since: "c++20", link: "cpp/keyword/import" },
-  { keyword: "module", since: "c++20", link: "cpp/keyword/module" },
+  { keyword: "import", since: "c++20", link: "cpp/identifier_with_special_meaning/import" },
+  { keyword: "module", since: "c++20", link: "cpp/identifier_with_special_meaning/module" },
+  { keyword: "pre", since: "c++26", link: "cpp/identifier_with_special_meaning/pre" },
+  { keyword: "post", since: "c++26", link: "cpp/identifier_with_special_meaning/pre" },
+  { keyword: "trivially_relocatable_if_eligible", since: "c++26", link: "cpp/identifier_with_special_meaning/trivially_relocatable_if_eligible" },
+  { keyword: "replaceable_if_eligible", since: "c++26", link: "cpp/identifier_with_special_meaning/replaceable_if_eligible" },
 ];
 
 export function getKeywords(): KeywordIndex[] {

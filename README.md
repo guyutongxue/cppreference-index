@@ -22,11 +22,6 @@ pip install mwparserfromhell
 
 下列符号（库设施、语法核心等）尚未收入 CppReference。
 
-### C++23
-
-- `<ranges>`
-  - `std::ranges::elements_of`
-
 ### C++26
 
 See [#5](https://github.com/guyutongxue/cppreference-index/issues/5)

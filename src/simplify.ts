@@ -119,6 +119,9 @@ function filterZombies(nodes: MwNodes) {
         break;
       }
       case "Heading": {
+        if (node.level === 3 && expectText(node.title) === "Notes") {
+          return filtered;
+        }
         if (node.level === 4) {
           zombieMemberNames = true;
         }
