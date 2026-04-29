@@ -121,8 +121,6 @@ const IDENTIFIERS_W_SPECIAL_MEANING = [
   { keyword: "module", since: "c++20", link: "cpp/identifier_with_special_meaning/module" },
   { keyword: "pre", since: "c++26", link: "cpp/identifier_with_special_meaning/pre" },
   { keyword: "post", since: "c++26", link: "cpp/identifier_with_special_meaning/pre" },
-  { keyword: "trivially_relocatable_if_eligible", since: "c++26", link: "cpp/identifier_with_special_meaning/trivially_relocatable_if_eligible" },
-  { keyword: "replaceable_if_eligible", since: "c++26", link: "cpp/identifier_with_special_meaning/replaceable_if_eligible" },
 ];
 
 export function getKeywords(): KeywordIndex[] {
