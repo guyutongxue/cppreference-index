@@ -88,6 +88,9 @@ export function filterSymbols(
     return nodes.flatMap((node) => {
       switch (node.type) {
         case "Template":
+          if (expectText(node.name) === "title") {
+            return [];
+          }
           return [simplifyTemplate(node)];
         case "Text":
           return [node.value];

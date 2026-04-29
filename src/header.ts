@@ -16,7 +16,7 @@ export async function getHeaders(): Promise<HeaderIndex[]> {
       const tds = $(this).children();
       const td1 = tds.eq(0);
       const a = td1.find("a");
-      const link = a.attr("href")?.substring(3); // remove /w/
+      const link = a.attr("href")?.substring(1); // remove /
       const name = a.text().trim();
       const marks: Marks = {};
       td1.find(".t-mark-rev")?.each(function () {

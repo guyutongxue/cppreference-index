@@ -17,7 +17,7 @@ export async function fetchSrc(page: string, parsed = false): Promise<string> {
     prop
   });
   const result = (await fetch(
-    `https://en.cppreference.com/mwiki/api.php?${params}`,
+    `https://en.cppreference.com/api.php?${params}`,
     { agent }
   ).then((r) => r.json())) as MwApiResult;
   console.log("Fetch done");
