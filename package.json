@@ -7,6 +7,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "generate": "node ./bin/generate.mjs ./dist",
+    "generate:subpages": "node ./bin/subpages.mjs ./dist",
     "build": "rimraf ./dist && tsup",
     "prepublishOnly": "pnpm build && pnpm generate",
     "test": "echo \"Error: no test specified\" && exit 1"

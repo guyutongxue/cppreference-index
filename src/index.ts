@@ -62,4 +62,5 @@ async function get<Detailed extends boolean>(options?: Options<Detailed>): Promi
 }
 
 export default get;
+export { getSubpages } from "./subpages";
 export * from "./typing";
