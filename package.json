@@ -1,15 +1,19 @@
 {
   "name": "@gytx/cppreference-index",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./subpages.json": "./dist/subpages.json"
+  },
   "scripts": {
     "generate": "node ./bin/generate.mjs ./dist",
     "generate:subpages": "node ./bin/subpages.mjs ./dist",
     "build": "rimraf ./dist && tsup",
-    "prepublishOnly": "pnpm build && pnpm generate",
+    "prepublishOnly": "pnpm build && pnpm generate && pnpm generate:subpages",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
