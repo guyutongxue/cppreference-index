@@ -12,6 +12,7 @@
   "scripts": {
     "generate": "node ./bin/generate.mjs ./dist",
     "generate:subpages": "node ./bin/subpages.mjs ./dist",
+    "report-missing": "node ./scripts/report-missing.mjs",
     "build": "rimraf ./dist && tsup",
     "prepublishOnly": "pnpm build && pnpm generate && pnpm generate:subpages",
     "test": "echo \"Error: no test specified\" && exit 1"
